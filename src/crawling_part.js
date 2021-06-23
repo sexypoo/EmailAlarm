@@ -7,7 +7,7 @@ const db = mongoose.connection;
 const client = require("cheerio-httpcli");
 
 //base url in this file
-let url = 'https://www.wevity.com/?c=find&s=1&gub=2&cidx=30&gp=2';
+let url = 'https://www.wevity.com/?c=find&s=1&gub=2&cidx=30&gp=3';
 
 let list = []; //database list
 let sub_url = []; //each url in this file
@@ -67,7 +67,7 @@ client.fetch(url, (err, $, res)=>{
         return
       }
 
-      list[i].img = $('.thumb img').attr('src'); //extract every img
+      list[i].img = 'https://www.wevity.com/' + $('.thumb img').attr('src'); //extract every img
       list[i].info = $('.comm-desc').text(); //extract every infomation
       list[i].dday = $(".dday-area").text();
       list[i].host = $(".cd-info-list li:nth-child(3)").text();
